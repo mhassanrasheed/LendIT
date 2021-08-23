@@ -48,9 +48,7 @@ router.post("/Register", async (req, res) => {
 			password: hashedPassword,
 		});
 		if (user !== null) {
-			const token = jwt.sign({ email: req.body.email }, "secret", {
-				expiresIn: "1h",
-			});
+			const token = jwt.sign({ email: req.body.email }, "secret");
 			res.status(200).json({
 				message: "Account Created",
 				token: token,
@@ -89,9 +87,7 @@ router.post("/login", async (req, res) => {
 				message: "An Account with this email does not exists",
 			});
 		} else if (await bcrypt.compare(req.body.password, user.password)) {
-			const token = jwt.sign({ email: req.body.email }, "secret", {
-				expiresIn: "1h",
-			});
+			const token = jwt.sign({ email: req.body.email }, "secret");
 			res.status(200).json({
 				message: "Login Successful",
 				token: token,
