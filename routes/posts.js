@@ -27,7 +27,6 @@ const upload = multer({
 router.post("/postImages", async (req, res) => {
 	try {
 		let postId = req.body.postId;
-		// let postId = 9;
 		console.log("postId", typeof postId, postId);
 		let images = await PostImage.findAll({ where: { postId: postId } });
 		if (images) {
@@ -46,9 +45,6 @@ router.get("/", async (req, res) => {
 		if (posts) {
 			console.log("posts", posts[0]);
 			postId = posts[0].id;
-			// const imageName = await PostImage.findAll({
-			// 	where: { postId: postId },
-			// });
 			res.send(posts);
 		} else {
 			console.log("no posts found");
@@ -61,7 +57,6 @@ router.get("/", async (req, res) => {
 //Adding Posts
 router.post("/addItem", async (req, res) => {
 	try {
-		console.log(req.body);
 		const post = await Post.create({
 			name: req.body.name,
 			description: req.body.description,
