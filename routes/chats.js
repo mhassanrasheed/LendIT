@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path"); // dont need it
 const router = express.Router();
-const Chat = require("../models/chat");
+const Chat = require("../models/message");
 const db = require("../config/database");
 
 router.post("/addMessage", async (req, res) => {

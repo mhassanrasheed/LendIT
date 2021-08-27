@@ -12,13 +12,10 @@ module.exports = {
 				type: Sequelize.INTEGER,
 			},
 			lastMessage: {
-				type: Sequelize.STRING,
-			},
-			users: {
 				type: Sequelize.INTEGER,
 				allowNull: false,
 				references: {
-					model: "Users",
+					model: "Messages",
 					key: "id",
 				},
 			},
